@@ -43,13 +43,13 @@ int main(int argc, char *argv[])
     m = 1;
     while(m == 1)
     {
-        printf("First number:\n");
+        printf("inter the first number:\n");
         scanf("%f",&a);
-        printf("Operation(+,-,*,/,^,!):\n");
+        printf("inter the operation");
         scanf(" %c",&c);
         if (c != '!')
         {
-            printf("Second number:\n");
+            printf("inter the second number:\n");
             scanf("%f",&b);
         }
         if (c == '+')
@@ -100,5 +100,5 @@ int main(int argc, char *argv[])
         printf("Do you want to continue? (0 - NO, 1 - YES)\n"); //повторение работы калькулятора
         scanf("%i",&m);
     }
-    return EXIT_SUCCESS;
+    return 0;
 }
