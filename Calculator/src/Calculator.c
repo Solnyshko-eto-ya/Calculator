@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     setvbuf(stderr, NULL, _IONBF, 0);
     float *vector1,*vector2, result,a,b;
     char c;
-    int m, mode, repeat, size, operation;
+    int m, mode, size, operation;
     m = 1;
     while(m == 1)
     {        printf("choose mode of the calculator:\n"); // Выбор с чем будет проводится работа
@@ -111,9 +111,6 @@ int main(int argc, char *argv[])
                 }
             }
         }
-
-        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n");
-                scanf("%i",&operation);
     }
     else{
     	result = 0;
@@ -146,7 +143,7 @@ int main(int argc, char *argv[])
     	        free(vector1);
     	        free(vector2);}
     	        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение работы калькулятора
-    	                       scanf("%i",&repeat);
+    	                       scanf("%i",&m);
     	        }
     return 0;
     }
