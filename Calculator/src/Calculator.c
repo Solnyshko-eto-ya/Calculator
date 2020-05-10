@@ -1,61 +1,104 @@
-/*
- ============================================================================
- Name        : kalkulator.c
- Author      : Andryfaciy
- Version     : 5
- Copyright   : maya and only maya
- Description : kalkulyator programm
- ============================================================================
- */
-
 #include <stdio.h>
 #include <stdlib.h>
-float first_var, second_var , result , g;
-char operation, next_time;
-int main(int argc , char *argv[] ) {
+
+float factorial(int n)  //—Ñ—É–Ω–∫—Ü–∏—è –¥–ª—è –≤—ã—á–∏—Å–ª–µ–Ω–∏—è —Ñ–∞–∫—Ç–æ—Ä–∏–∞–ª–∞(n - —á–∏—Å–ª–æ)
+{
+    float res;
+    int i;
+    res = 1;
+    i = 1;
+    while (i != (n + 1))
+    {
+        res = res * i;
+        i++;
+    }
+    return(res);
+}
+
+float power(float x, float y)  //—Ñ—É–Ω–∫—Ü–∏—è –¥–ª—è –≤—ã—á–∏—Å–ª–µ–Ω–∏—è —Å—Ç–µ–ø–µ–Ω–∏(x - —á–∏—Å–ª–æ, y - —Å—Ç–µ–ø–µ–Ω—å)
+{
+    float res;
+    int i;
+    res = 1;
+    i = 0;
+    while (i < y)
+    {
+        res = res * x;
+        i++;
+    }
+    if (y < 0)
+    {
+        res = 1/res;
+    }
+    return(res);
+}
+
+int main(int argc, char *argv[])
+    {
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
-    next_time = 'y';
-    while (next_time == 'y'){ // ÷ËÍÎ Ì‡ ÔÓ‚ÚÓÂÌËÂ ÔÓ„‡ÏÏ˚
-        puts("enter the first var ");
-        scanf("%f", &first_var);
-        puts("enter your operation  ");
-        scanf(" %c", &operation);
-        g = first_var ;
-        if (operation == '+') { // ŒÔÂ‡ˆËˇ ÒÎÓÊÂÌËˇ
-            puts("enter the second  var ");
-            scanf("%f", &second_var);
-            result = first_var + second_var ;
-        }else if (operation == '-') {   // –‡ÁÌÓÒÚ¸
-            puts("enter the second  var ");
-            scanf("%f", &second_var);
-            result = first_var - second_var ;
-        }else if (operation == '*') {    // ”ÏÌÓÊÂÌËÂ
-            puts("enter the second  var ");
-            scanf("%f", &second_var);
-            result = first_var * second_var ;
-        }else if (operation == '/') {   // ƒÂÎÂÌËÂ
-            puts("enter the second  var ");
-            scanf("%f", &second_var);
-            result = first_var / second_var ;
-        }else if (operation == '^') {   // ¬ÓÁ‚Â‰ÂÌËÂ ‚ ÒÚÂÔÂÌ¸
-            puts("enter the second  var ");
-            scanf("%f", &second_var);
-            while (second_var >1){
-                first_var = first_var * g;
-                second_var = second_var - 1;
-               }
-            result = first_var ;
-        }else if (operation == '!') {    // ¬˚˜ËÒÎÂÌËÂ Ù‡ÍÚÓË‡Î‡
-            while (g > 1 ){
-                g = g - 1;
-                first_var = first_var *g ;
-            }
-            result = first_var;
+    float a,b;
+    char c;
+    int m;
+    m = 1;
+    while(m == 1)
+    {
+        printf("First number:\n");
+        scanf("%f",&a);
+        printf("Operation(+,-,*,/,^,!):\n");
+        scanf(" %c",&c);
+        if (c != '!')
+        {
+            printf("Second number:\n");
+            scanf("%f",&b);
         }
-        printf("%f" , result );    // –ÂÁÛÎ¸Ú‡Ú
-        puts(" repeat it? (enter \"y\" to continue)");
-        scanf(" %c", &next_time);
+        if (c == '+')
+        {
+            printf("Answer:\n");
+            printf("%f",a+b);
+        }
+        else
+        {
+            if (c == '-')
+            {
+                printf("Answer:\n");
+                printf("%f",a-b);
+            }
+            else
+            {
+                if (c == '^')
+                {
+                    printf("Answer:\n");
+                    printf("%f", power(a,b));
+                }
+                else
+                {
+                    if (c == '/')
+                    {
+                        printf("Answer:\n");
+                        printf("%f",a/b);
+                    }
+                    else
+                    {
+                        if (c == '*')
+                        {
+                            printf("Answer:\n");
+                            printf("%f",a*b);
+                        }
+                        else
+                        {
+                            if (c == '!')
+                            {
+                                printf("Answer:\n");
+                                printf("%f",factorial(a));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        printf("Do you want to continue? (0 - NO, 1 - YES)\n"); //–ø–æ–≤—Ç–æ—Ä–µ–Ω–∏–µ —Ä–∞–±–æ—Ç—ã –∫–∞–ª—å–∫—É–ª—è—Ç–æ—Ä–∞
+        scanf("%i",&m);
     }
-    return 0;
+    return EXIT_SUCCESS;
 }
