@@ -46,12 +46,17 @@ int main(int argc, char *argv[])
     {
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
-    float a,b;
+    float *vector1,*vector2, result,a,b;
     char c;
-    int m;
+    int m, mode, repeat, size, operation;
     m = 1;
     while(m == 1)
-    {
+    {        printf("choose mode of the calculator:\n"); // Выбор с чем будет проводится работа
+    printf("1. The numbers\n");
+    printf("2. The vectors\n");
+    scanf("%i", &mode);
+
+    if (mode == 1){
         printf("inter the first number:\n");
         scanf("%f",&a);
         printf("inter the operation");
@@ -106,8 +111,43 @@ int main(int argc, char *argv[])
                 }
             }
         }
-        printf("Do you want to continue? (0 - NO, 1 - YES)\n"); //повторение работы калькулятора
-        scanf("%i",&m);
+
+        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n");
+                scanf("%i",&operation);
     }
+    else{
+    	result = 0;
+    	            printf("Enter the size of the vectors: ");
+    	            scanf("%i", &size);
+    	            vector1 = malloc(size*sizeof(int));
+    	            vector2 = malloc(size*sizeof(int));
+    	        printf("Enter the coordinates of the first vector: ");
+    	        for (int i=0; i < size; i++) scanf("%f", &vector1[i]);
+    	        printf("Enter the coordinates of the second vector: ");
+    	        for (int i=0; i < size; i++) scanf("%f", &vector2[i]);
+    	        printf("Select operation\n");
+    	        printf("1. Vector addition\n");
+    	        printf("2. Vector difference\n");
+    	        printf("3. Scalar product of vectors\n");
+    	        scanf("%i", &operation);
+    	        if (operation == 1){
+    	           printf("Answer:\n");
+    	           for (int i=0; i < size; i++) printf("%.2f ", vector1[i]+vector2[i]);
+    	        }
+    	        else if (operation == 2){
+    	            printf("Answer:\n");
+    	            for (int i=0; i < size; i++) printf("%.2f ", vector1[i]-vector2[i]);
+    	        }
+    	        else if (operation == 3) {
+    	            printf("Answer:\n");
+    	            for (int i=0; i < size; i++) result = vector1[i] * vector2[i] + result;
+    	            printf("%.2f ", result);
+    	        }
+    	        free(vector1);
+    	        free(vector2);}
+    	        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение работы калькулятора
+    	                       scanf("%i",&repeat);
+    	        }
     return 0;
-}
+    }
+
