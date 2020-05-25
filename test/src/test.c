@@ -47,57 +47,57 @@ int main(int argc, char *argv[])
     printf("v. The vectors\n");
     scanf(" %c",&choose);
     switch(choose){
-    case's':   // выбор работы с числами
-    	printf("enter the first number:\n"); // вводим первое число
+    case's':
+    	printf("enter the first number:\n");
     	        scanf(" %f",&a);
-    	        printf("enter the operation"); // вводим операцию
+    	        printf("enter the operation");
     	        scanf(" %c", &operation);
     	        if(operation != '!' ){
-    	printf("enter the second number:\n"); // вводим второе число
+    	printf("enter the second number:\n");
     	scanf(" %f",&b);}
         switch(operation){
-        case '+': // сложение
+        case '+':
         	 printf("Answer:\n");
         	            printf(" %f",a+b);
         	break;
-        case '-': // разность
+        case '-':
         	printf("Answer:\n");
         	                printf("%f",a-b);
         	break;
-        case '^':   // возведение в степень
+        case '^':
         	printf("Answer:\n");
         	                    printf("%f", stepen(a,b));
         	break;
-        case '/': // деление
+        case '/':
         	printf("Answer:\n");
         	                    printf("%f",a/b);
         	break;
-        case '*':  // умножение
+        case '*':
         	printf("Answer:\n");
         	                    printf("%f",a*b);
         	break;
-        case '!': // факториал
+        case '!':
         	printf("Answer:\n");
         	                    printf("%f",factorial(a));
         	break;
 
         }
         break;
-        case 'v': // выбор работы с векторами
+        case 'v':
                 result = 0;
-    	            printf("Enter the size of the vectors: "); // выбираем размер вектора
+    	            printf("Enter the size of the vectors: ");
     	            scanf("%i", &size);
     	            vector1 = malloc(size*sizeof(int));
     	            vector2 = malloc(size*sizeof(int));
-    	        printf("Enter the coordinates of the first vector: "); // вводим координаты первого вектора
+    	        printf("Enter the coordinates of the first vector: ");
     	        for (int i=0; i < size; i++) scanf("%f", &vector1[i]);
-    	        printf("Enter the coordinates of the second vector: "); // вводим координаты второго вектора
+    	        printf("Enter the coordinates of the second vector: ");
     	        for (int i=0; i < size; i++) scanf("%f", &vector2[i]);
-    	        printf("Select operation\n"); // выбираем что будем делать с векторами
-    	        printf("1. Vector addition\n"); // сумма
-    	        printf("2. Vector difference\n"); // разность
-    	        printf("3. Scalar product of vectors\n"); // скалярное произведение
-    	        scanf("%c", &operation);
+    	        printf("Select operation\n");
+    	        printf("1. Vector addition\n");
+    	        printf("2. Vector difference\n");
+    	        printf("3. Scalar product of vectors\n");
+    	        scanf("%i", &operation);
     	        if (operation == 1){
     	           printf("Answer:\n");
     	           for (int i=0; i < size; i++) printf("%.2f ", vector1[i]+vector2[i]);
@@ -111,9 +111,8 @@ int main(int argc, char *argv[])
     	            for (int i=0; i < size; i++) result = vector1[i] * vector2[i] + result;
     	            printf("%.2f ", result);
     	        }
-    	        free(vector1); // освобождение памяти
-    	        free(vector2);
-    }
+    	        free(vector1);
+    	        free(vector2);}
     	        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение работы калькулятора
     	                       scanf("%i",&m);
     	        }
