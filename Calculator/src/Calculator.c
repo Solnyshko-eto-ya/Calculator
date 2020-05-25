@@ -1,7 +1,17 @@
+/*
+ ============================================================================
+ Name        : Calculator.c
+ Author      : Andryfaciy
+ Version     : 3
+ Copyright   : maya and only maya
+ Description : Calculator with operations for calculating factorial, addition, difference, multiplication, exponentiation and division.
+It can also count the difference, sum and scalar product of vectors.
+ ============================================================================
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
-float factorial(int n)  //функция для вычисления факториала(n - число)
+float factorial(int n)  //function for calculating the factorial(n-number)
 {
     float res;
     int i;
@@ -15,7 +25,7 @@ float factorial(int n)  //функция для вычисления факториала(n - число)
     return(res);
 }
 
-float stepen(float x, float y)  //функция для вычисления степени(x - число, y - степень)
+float stepen(float x, float y)  //function for calculating the degree(x-number, y-degree)
 {
     float res;
     int i;
@@ -42,61 +52,61 @@ int main(int argc, char *argv[])
     char choose, operation;
     m = 1;
     while(m == 1){
-          printf("choose mode of the calculator:\n"); // Выбор с чем будет проводится работа
+          printf("choose mode of the calculator:\n"); // Choosing what to work with
     printf("s. The numbers\n");
     printf("v. The vectors\n");
     scanf(" %c",&choose);
     switch(choose){
-    case's':   // выбор работы с числами
-    	printf("enter the first number:\n"); // вводим первое число
+    case's':   // choosing how to work with numbers
+    	printf("enter the first number:\n"); // entering the first number
     	        scanf(" %f",&a);
-    	        printf("enter the operation"); // вводим операцию
+    	        printf("enter the operation"); // entering an operation
     	        scanf(" %c", &operation);
     	        if(operation != '!' ){
-    	printf("enter the second number:\n"); // вводим второе число
+    	printf("enter the second number:\n"); // entering the second number
     	scanf(" %f",&b);}
         switch(operation){
-        case '+': // сложение
+        case '+': // addition
         	 printf("Answer:\n");
         	            printf(" %f",a+b);
         	break;
-        case '-': // разность
+        case '-': //difference
         	printf("Answer:\n");
         	                printf("%f",a-b);
         	break;
-        case '^':   // возведение в степень
+        case '^':   // exponentiation
         	printf("Answer:\n");
         	                    printf("%f", stepen(a,b));
         	break;
-        case '/': // деление
+        case '/': // division
         	printf("Answer:\n");
         	                    printf("%f",a/b);
         	break;
-        case '*':  // умножение
+        case '*':  // multiplication
         	printf("Answer:\n");
         	                    printf("%f",a*b);
         	break;
-        case '!': // факториал
+        case '!': //factorial
         	printf("Answer:\n");
         	                    printf("%f",factorial(a));
         	break;
 
         }
         break;
-        case 'v': // выбор работы с векторами
+        case 'v': // choosing how to work with vectors
                 result = 0;
-    	            printf("Enter the size of the vectors: "); // выбираем размер вектора
+    	            printf("Enter the size of the vectors: "); // choosing the size of the vector
     	            scanf("%i", &size);
     	            vector1 = malloc(size*sizeof(int));
     	            vector2 = malloc(size*sizeof(int));
-    	        printf("Enter the coordinates of the first vector: "); // вводим координаты первого вектора
+    	        printf("Enter the coordinates of the first vector: "); //entering the coordinates of the first vector
     	        for (int i=0; i < size; i++) scanf("%f", &vector1[i]);
-    	        printf("Enter the coordinates of the second vector: "); // вводим координаты второго вектора
+    	        printf("Enter the coordinates of the second vector: "); // entering the coordinates of the second vector
     	        for (int i=0; i < size; i++) scanf("%f", &vector2[i]);
-    	        printf("Select operation\n"); // выбираем что будем делать с векторами
-    	        printf("1. Vector addition\n"); // сумма
-    	        printf("2. Vector difference\n"); // разность
-    	        printf("3. Scalar product of vectors\n"); // скалярное произведение
+    	        printf("Select operation\n"); // choosing what to do with vectors
+    	        printf("1. Vector addition\n"); // addition
+    	        printf("2. Vector difference\n"); // difference
+    	        printf("3. Scalar product of vectors\n"); // scalar product
     	        scanf("%c", &operation);
     	        if (operation == 1){
     	           printf("Answer:\n");
@@ -111,10 +121,10 @@ int main(int argc, char *argv[])
     	            for (int i=0; i < size; i++) result = vector1[i] * vector2[i] + result;
     	            printf("%.2f ", result);
     	        }
-    	        free(vector1); // освобождение памяти
+    	        free(vector1); // free memory
     	        free(vector2);
     }
-    	        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //повторение работы калькулятора
+    	        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //repeating the calculator operation
     	                       scanf("%i",&m);
     	        }
     return 0;
