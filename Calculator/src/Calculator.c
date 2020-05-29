@@ -50,9 +50,10 @@ int main(int argc, char *argv[])
     FILE *input, *output;
     float *vector1,*vector2,a,b, res;
     int  size;
-    char choose, operation, inputfile[100], outputfile[100], m;
-    m = 1;
-    while(m == 1){
+    char choose, operation, inputfile[100], outputfile[100], repeat;
+    repeat = 'y';
+
+    while(repeat == 'y'){
 printf("Enter input file name: ");
 	scanf(" %s", inputfile);
 	printf("Enter output file name: ");
@@ -95,8 +96,11 @@ switch(choose){
 	}
 	break;
         case 'v': // choosing to work with vectors
-        	printf("I want a cokes");}
+        	printf("I want a cokes");}}
+repeat = 0;
+printf("Continue?" "y-yes/n-no");
+scanf(" %c",&repeat);}
 return 0;}
-    }
-    }
+
+
 
