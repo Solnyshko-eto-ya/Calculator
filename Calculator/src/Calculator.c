@@ -47,85 +47,56 @@ int main(int argc, char *argv[])
     {
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
-    float *vector1,*vector2, result,a,b;
-    int m, size;
-    char choose, operation;
+    FILE *input, *output;
+    float *vector1,*vector2,a,b, res;
+    int  size;
+    char choose, operation, inputfile[100], outputfile[100], m;
     m = 1;
     while(m == 1){
-          printf("choose mode of the calculator:\n"); // Choosing what to work with
-    printf("s. The numbers\n");
-    printf("v. The vectors\n");
-    scanf(" %c",&choose);
-    switch(choose){
-    case's':   // choosing how to work with numbers
-    	printf("enter the first number:\n"); // entering the first number
-    	        scanf(" %f",&a);
-    	        printf("enter the operation"); // entering an operation
-    	        scanf(" %c", &operation);
-    	        if(operation != '!' ){
-    	printf("enter the second number:\n"); // entering the second number
-    	scanf(" %f",&b);}
+printf("Enter input file name: ");
+	scanf(" %s", inputfile);
+	printf("Enter output file name: ");
+	scanf(" %s", outputfile);
+	input = fopen(inputfile, "r");
+	output = fopen(outputfile, "w");
+	while(feof(input) == 0){
+	fscanf(input, "%c", &choose);
+	fscanf(input, " %c", &operation);
+	fscanf(input," %f",&a);
+	fscanf(input," %f",&b);
+
+switch(choose){
+    case's':   // choosing work with numbers
         switch(operation){
         case '+': // addition
-        	 printf("Answer:\n");
-        	            printf(" %f",a+b);
-        	break;
-        case '-': //difference
-        	printf("Answer:\n");
-        	                printf("%f",a-b);
-        	break;
-        case '^':   // exponentiation
-        	printf("Answer:\n");
-        	                    printf("%f", stepen(a,b));
-        	break;
-        case '/': // division
-        	printf("Answer:\n");
-        	                    printf("%f",a/b);
-        	break;
-        case '*':  // multiplication
-        	printf("Answer:\n");
-        	                    printf("%f",a*b);
-        	break;
-        case '!': //factorial
-        	printf("Answer:\n");
-        	                    printf("%f",factorial(a));
-        	break;
+        	fprintf(output,"%.2f + %.2f = %.2f", a, b, a+b);
+		break;
+	case '-':
+		fprintf(output,"%.2f - %.2f = %.2f", a, b, a-b);
+		break;
+	case '*':
+		fprintf(output,"%.2f * %.2f = %.2f", a, b, a*b);
+		break;
+	case '/':
+		if(b !=0)
+		fprintf(output,"%.2f / %.2f = %.2f", a, b, a/b);
+		else fprintf(output,"No solution");
+		break;
+	case '^':
+		fprintf(output, "%.3f ^ %.3f = %.3f", a, b, stepen(a,b));
+		break;
+	case '!':
+		fscanf(input, "%f",&a);
+		if (a >= 0) fprintf(output, "%.0f! = %.0f", a, factorial(a));
+		else fprintf(output, "This operation is not valid");
+		break;
+	default:
+		fprintf(output, "Unknown operation");
+	}
+	break;
+        case 'v': // choosing to work with vectors
+        	printf("I want a cokes");}
+return 0;}
+    }
+    }
 
-        }
-        break;
-        case 'v': // choosing how to work with vectors
-                result = 0;
-    	            printf("Enter the size of the vectors: "); // choosing the size of the vector
-    	            scanf("%i", &size);
-    	            vector1 = malloc(size*sizeof(int));
-    	            vector2 = malloc(size*sizeof(int));
-    	        printf("Enter the coordinates of the first vector: "); //entering the coordinates of the first vector
-    	        for (int i=0; i < size; i++) scanf("%f", &vector1[i]);
-    	        printf("Enter the coordinates of the second vector: "); // entering the coordinates of the second vector
-    	        for (int i=0; i < size; i++) scanf("%f", &vector2[i]);
-    	        printf("Select operation\n"); // choosing what to do with vectors
-    	        printf("1. Vector addition\n"); // addition
-    	        printf("2. Vector difference\n"); // difference
-    	        printf("3. Scalar product of vectors\n"); // scalar product
-    	        scanf("%c", &operation);
-    	        if (operation == 1){
-    	           printf("Answer:\n");
-    	           for (int i=0; i < size; i++) printf("%.2f ", vector1[i]+vector2[i]);
-    	        }
-    	        else if (operation == 2){
-    	            printf("Answer:\n");
-    	            for (int i=0; i < size; i++) printf("%.2f ", vector1[i]-vector2[i]);
-    	        }
-    	        else if (operation == 3) {
-    	            printf("Answer:\n");
-    	            for (int i=0; i < size; i++) result = vector1[i] * vector2[i] + result;
-    	            printf("%.2f ", result);
-    	        }
-    	        free(vector1); // free memory
-    	        free(vector2);
-    }
-    	        printf("\nDo you want to continue? (0 - NO, 1 - YES)\n"); //repeating the calculator operation
-    	                       scanf("%i",&m);
-    	        }
-    return 0;
-    }
