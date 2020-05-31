@@ -1,9 +1,9 @@
 /*
  ============================================================================
- Name        : Calculator.c
- Author      : Andryfaciy
+ Name        : Calculator.
+ Author      : Andryfaciy.
  Version     : 4
- Copyright   : maya and only maya
+ Copyright   : maya and only maya.
  Description : Calculator with input and output from a file. Calculator with operations
  for calculating factorial, addition, difference, multiplication, exponentiation and division.
  It can also count the difference, sum and scalar product of vectors.
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 	char choose, operation, inputfile[100], outputfile[100], repeat = 'y';
 	FILE *input, *output;
 
-	while (repeat == 'y') {
+	while (repeat == 'y') { // Cycle to repeat the program.
 		printf("Enter input file name:\n "); // Enter the name of the input and output file.
 		scanf("%s", inputfile);
 		printf("Enter output file name:\n ");
