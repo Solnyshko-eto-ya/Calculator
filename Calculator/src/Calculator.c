@@ -7,6 +7,7 @@
  Description : Calculator with input and output from a file. Calculator with operations
  for calculating factorial, addition, difference, multiplication, exponentiation and division.
  It can also count the difference, sum and scalar product of vectors.
+ To find out how to work with the program, check the README file.
  ============================================================================
  */
 #include <stdio.h>
